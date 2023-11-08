@@ -1,0 +1,16 @@
+Milestone P2, due 23:59 CET, 17 Nov 2023 (20% of the project): 
+To be done as a team, where the team submits a GitHub repository that includes: 
+(1) a well-organized README containing the detailed project proposal (up to 1000 words) and 
+(2) a notebook containing initial analyses and data handling pipelines. We will grade the correctness, 
+quality of code, and quality of textual descriptions.
+
+
+# Analyzing Subcategories
+subcategory --> multiple ones 
+
+
+# Niche Content
+investigating tags --> mukbang 
+
+
+
