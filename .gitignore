@@ -1,2 +1,2 @@
-# ignore data folder
-./data
+# ignore data folder(s)
+/data_*
