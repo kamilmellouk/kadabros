@@ -1,16 +1,3 @@
-<div id="top"></div>
-
-<h3 align="center">CS401 Applied Data Analysis - Project </h3>
-
-  <p align="center">
-    <a href="https://github.com/epfl-ada/ada-2023-project-kadabros">Browse Code</a>
-    ·
-    <a href="https://github.com/epfl-ada/ada-2023-project-kadabros/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/epfl-ada/ada-2023-project-kadabros/issues">Request Feature</a>
-  </p>
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -20,36 +7,56 @@ This project assignment was implemented by the Kadabros team (see below for grou
 
 ## Abstract
 
+In this data analysis story, we will focus on exploring the dynamics of the "People & Blogs" category on YouTube from 2012 to 2019. The analysis delves into the evolution of subcategories within "People & Blogs," investigates how YouTube channels strategically navigate and benefit from subcategory trends, and explores the specific evolution of the Vlog subcategory. Our aim is to understand when and why channels eventually have transitioned into or out of the People & Blogs categories over the past decade.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Research questions
+## Research questions (CONCEPTS)
 
-* How does a Youtube subcategory's popularity evolve over time?
-* How does a Youtube channel take advantage of the popularity of its subcategory?
-* How did the Vlog video subcategory evolve over time (length, views, likes, dislikes, comments)?
-* How are the tags in Gaming videos linked together (casual v.s. competitive, League of Legends v.s. )?
+* How does a YouTube subcategory's popularity within "People & Blogs" evolve over time?
+* How do YouTube channels within the "People & Blogs" category leverage the popularity of their respective subcategories?
+* What insights can be gained from the evolution of Vlog videos within "People & Blogs" over time (considering factors such as length, views, likes, dislikes, and comments)?
+* How did Youtube channels morphing either into or out of the People & Blogs categories fare after the transition ? E.g. how was a channel's popularity affected after migrating from Gaming to Vlog ?
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Methods
 
-*How are the tags in Gaming videos linked together (casual v.s. competitive, League of Legends v.s. )?*
+*How do YouTube channels within the "People & Blogs" category leverage the popularity of their respective subcategories?*
 
-For this question we aim to use the tags of the videos to create a graph of tags. We will then use the graph to find clusters of tags that are linked together. We will then use the clusters to find the most popular tags and the tags that are the most linked together.
+For this question, we will conduct an analysis of channel behaviors, exploring factors such as upload frequency, content diversity, tag usage etc..
+
+*Evolution of Vlog videos within "People & Blogs":*
+
+This analysis will involve exploring trends over time, considering video length, views, likes, dislikes, and comments to understand the changing landscape of Vlog content within the "People & Blogs" category.
+
+*How did Youtube channels morphing either into or out of the People & Blogs categories fare after the transition ?:*
+
+To address the impact of transitioning channels in and out of the "People & Blogs" category, our approach involves identifying these transitions using metadata. We will then analyze various popularity metrics (views, likes, dislikes, comments, and subscriber counts) before and after the transition. Additionally, we will examine user engagement patterns during this period and compare the performance of transitioning channels with those of similar profiles that remain static in the prior category. Qualitative analysis of content changes and statistical significance testing will be employed to provide a comprehensive understanding of how these category transitions influence a channel's popularity.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Proposed timeline
+
+The team plans to follow the timeline below for the project:
+
+1. **Exploratory Data Analysis (EDA)**: Conduct initial analysis to identify trends and patterns within the subcategory. The general basis of this will be done in the scope of the P2 Milestone.
+2. **Channel Strategy Analysis**: Investigate how YouTube channels in the "People & Blogs" category strategically leverage subcategory popularity.
+3. **Vlog Subcategory Evolution Analysis**: Dive deeper into the evolution of Vlog videos, considering factors like video length, views, likes, dislikes, and comments.
+4. **Identifying Category Transitions**: Implement methods to identify instances where YouTube channels transitioned into or out of the "People & Blogs" category.
+5. **Popularity Metrics Analysis for Transitioning Channels**: Collect and analyze popularity metrics (views, likes, dislikes, comments, and subscriber counts) for channels before and after category transitions.
+6.  **Comparison with Static Category Channels**: Compare the performance of channels that underwent category transitions with channels that remained static in the "People & Blogs" category.
+7.  **Qualitative Analysis of Content Changes**: Conduct qualitative analysis of content changes accompanying category transitions, reviewing video content, titles, and descriptions.
+8.  **Statistical Significance Testing**: Apply statistical significance testing to validate observed changes in popularity metrics, ensuring results are not due to random variation.
+9.  **Synthesis and Reporting**: Compile findings into a cohesive story, providing insights into the dynamics of the "People & Blogs" category on YouTube, with a particular focus on the impact of category transitions on channel popularity.
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Organization within the team
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-## Questions for TAs (optional)
-
-* Should we focus only on one subcategory or can we analyse the emergence of subcategories generally by looking at several cases?
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -61,59 +68,3 @@ For this question we aim to use the tags of the videos to create a graph of tags
 * [Matplotlib](https://matplotlib.org/)
 * [nltk](https://www.nltk.org/)
 * [Jupyter Notebook](https://jupyter.org/)
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-* Python 3.7 or higher
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/epfl-ada/ada-2023-project-kadabros
-    ```
-2. Install the required packages
-   ```sh
-   pip install -r requirements.txt
-   ```
-
-ADD OTHER COMMANDS HERE
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- PROJECT STRUCTURE -->
-## Project Structure
-
-The project is structured as follows:
-
-```
-REDO THIS
-```
-
-
-<!-- CONTACT -->
-## Contact
-
-Pierre Hellich - [pierre.hellich@epfl.ch](mailto:pierre.hellich@epfl.ch)
-
-Martin Nguyen - [nguyen.martin@epfl.ch](mailto:nguyen.martin@epfl.ch)
-
-Hamza Laarous - [hamza.laarous@epfl.ch](mailto:hamza.laarous@epfl.ch)
-
-Cyril Khoneisser - [cyril.khoneisser@epfl.ch](mailto:cyril.khoneisser@epfl.ch)
-
-Kamil Mellouk - [kamil.mellouk@epfl.ch](mailto:kamil.mellouk@epfl.ch)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-# ada-2023-project-kadabros
-
-Here's the link to [YouNiverse GitHUb](https://github.com/epfl-dlab/YouNiverse) with the description of each file, and the [link to the zenodo plateform](https://zenodo.org/records/4650046) to download them.
