@@ -1,20 +1,25 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project assignment was implemented by the Kadabros team (see below for group members) for the <a href="https://epfl-ada.github.io/teaching/fall2023/cs401/">CS401 Appplied Data Analysis</a> course at <a href="https://www.epfl.ch">EPFL</a>.
+This project assignment was implemented by the Kadabros team (see below for group members) for the <a href="https://epfl-ada.github.io/teaching/fall2023/cs401/">CS401 Appplied Data Analysis</a> course at <a href="https://www.epfl.ch">EPFL</a>. It builds on the YouNiverse dataset studied and made available by [Manoel Horeira](https://zenodo.org/records/4650046).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Abstract
 
-In this data analysis story, we will focus on exploring the dynamics of the "People & Blogs" category on YouTube from 2012 to 2019. The analysis delves into the evolution of subcategories within "People & Blogs," investigates how YouTube channels strategically navigate and benefit from subcategory trends, and explores the specific evolution of the Vlog subcategory. Our aim is to understand when and why channels eventually have transitioned into or out of the People & Blogs categories over the past decade.
+In this data analysis story, we will focus on exploring the dynamics of the "People & Blogs" category on YouTube from 2006 to 2019. This YouTube category encompasses content primarily focused on individuals or groups sharing personal experiences, opinions, and daily activities. It includes a wide range of video types, such as vlogs, lifestyle content, and commentary. The emergence of the "People & Blogs" category can be traced back to the early days of YouTube, gaining prominence as users increasingly sought to share their lives, interests, and perspectives in a more personal and informal manner. This category has since evolved into a diverse space, reflecting the individuality and creativity of content creators within the YouTube community. It remains a vibrant and relevant group, with people rebranding their channels into the genre more and more.
+
+Our analysis delves into the evolution of subcategories within "People & Blogs," investigates how YouTube channels strategically navigate and benefit from subcategory trends, and explores the specific evolution of the Vlog subcategory. Our aim is to understand when and why channels eventually have transitioned into or out of the People & Blogs categories over the past decade, and mostly what consequences the shift had on their audience and popularity.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Research questions (CONCEPTS)
+## Research questions
 
+The goal of this research is to get insights on the emergence of the People & Blogs YouTube category and its evolution since then. Its final purpose lies in understanding the effects that getting into this genre of uploads can subsequently have on a channel's growth. To do so, we will explore the data and look to answer these auxiliary questions:
+
+* When did the "People & Blogs" category come to life and how did its popularity fare in comparison to other genres ?
+* How do YouTube channels within the category leverage the popularity of their respective subcategories?
 * How does a YouTube subcategory's popularity within "People & Blogs" evolve over time?
-* How do YouTube channels within the "People & Blogs" category leverage the popularity of their respective subcategories?
 * What insights can be gained from the evolution of Vlog videos within "People & Blogs" over time (considering factors such as length, views, likes, dislikes, and comments)?
 * How did Youtube channels morphing either into or out of the People & Blogs categories fare after the transition ? E.g. how was a channel's popularity affected after migrating from Gaming to Vlog ?
 
@@ -50,7 +55,13 @@ The team plans to follow the timeline below for the project:
 8.  **Statistical Significance Testing**: Apply statistical significance testing to validate observed changes in popularity metrics, ensuring results are not due to random variation.
 9.  **Synthesis and Reporting**: Compile findings into a cohesive story, providing insights into the dynamics of the "People & Blogs" category on YouTube, with a particular focus on the impact of category transitions on channel popularity.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
+## Project Structure
+* `data folder`  : Contains the raw and processed datasets used for the analysis.
+* `utils folder`: Contains helper methods for our exploration.
+* `notebooks`: Contains individual notebooks developed during the initial exploratory phase.
+* `eda.ipynb`: Contains the main EDA of the data for our story.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
