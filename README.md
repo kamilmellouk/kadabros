@@ -58,7 +58,7 @@ The team plans to follow the timeline below for the project:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Project Structure
-* `data folder`  : Contains the raw and processed datasets used for the analysis.
+* `data_youniverse` folder: Given that our data is very large, we chose not to version control this folder. We will chose to name this folder `data_youniverse` and this will be the data path we will be working with.
 * `utils folder`: Contains helper methods for our exploration.
 * `notebooks`: Contains individual notebooks developed during the initial exploratory phase.
 * `eda.ipynb`: Contains the main EDA of the data for our story.
