@@ -29,18 +29,19 @@ The goal of this research is to get insights on the emergence of the People & Bl
 
 *How do YouTube channels within the "People & Blogs" category leverage the popularity of their respective subcategories?*
 
-For this question, we will conduct an analysis of channel behaviors, exploring factors such as upload frequency, content diversity, tag usage etc..
-The process involves extracting individual tags from comma-separated strings, standardizing them by trimming spaces and converting to lowercase, and removing any empty tags. This creates a clean, uniform dataset of tags, ready for further analysis and machine learning applications. 
-In the clustering methodology, YouTube video tags are first converted into a numerical format using TF-IDF, which are then clustered using the K-Means algorithm. The high-dimensional data is reduced to three dimensions via PCA for visualization, enabling the clusters to be visually represented in a 3D scatter plot.
+    Our analysis focuses on channel behaviors, examining factors like upload frequency, content diversity, and tag usage. We began by preprocessing the tags by extracting and standardizing YouTube video tags from comma-separated strings, this was our process: remove spaces, convert to lowercase, and eliminate empty tags to create a clean dataset. 
 
+    Initially, we transformed these tags into a numerical format using TF-IDF and clustered them with K-Means, reducing data dimensionality to three dimensions through PCA for 3D scatter plot visualization. However, this approach yielded unsatisfactory results.
+
+    Subsequently, we employed GloVe model word embeddings and used TSNE for dimensionality reduction before applying KMeans. TSNE, an algorithm suited for embedding high-dimensional data into a lower-dimensional space, operates on probability distributions with random walks on neighborhood graphs to uncover data structure. This method showed significant improvement, as evident in the visualizations in the eda.ipynb notebook. Additionally, we explored Latent Dirichlet Allocation (LDA) to identify frequently co-occurring word groups (topics).
 
 *Evolution of Vlog videos within "People & Blogs":*
 
-This analysis will involve exploring trends over time, considering video length, views, likes, dislikes, and comments to understand the changing landscape of Vlog content within the "People & Blogs" category.
+    This analysis will involve exploring trends over time, considering video length, views, likes, dislikes, and comments to understand the changing landscape of Vlog content within the "People & Blogs" category.
 
 *How did Youtube channels morphing either into or out of the People & Blogs categories fare after the transition ?:*
 
-To address the impact of transitioning channels in and out of the "People & Blogs" category, our approach involves identifying these transitions using metadata. We will then analyze various popularity metrics (views, likes, dislikes, comments, and subscriber counts) before and after the transition. Additionally, we will examine user engagement patterns during this period and compare the performance of transitioning channels with those of similar profiles that remain static in the prior category. Qualitative analysis of content changes and statistical significance testing will be employed to provide a comprehensive understanding of how these category transitions influence a channel's popularity.
+    To address the impact of transitioning channels in and out of the "People & Blogs" category, our approach involves identifying these transitions using metadata. We will then analyze various popularity metrics (views, likes, dislikes, comments, and subscriber counts) before and after the transition. Additionally, we will examine user engagement patterns during this period and compare the performance of transitioning channels with those of similar profiles that remain static in the prior category. Qualitative analysis of content changes and statistical significance testing will be employed to provide a comprehensive understanding of how these category transitions influence a channel's popularity.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
