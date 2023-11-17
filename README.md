@@ -30,6 +30,9 @@ The goal of this research is to get insights on the emergence of the People & Bl
 *How do YouTube channels within the "People & Blogs" category leverage the popularity of their respective subcategories?*
 
 For this question, we will conduct an analysis of channel behaviors, exploring factors such as upload frequency, content diversity, tag usage etc..
+The process involves extracting individual tags from comma-separated strings, standardizing them by trimming spaces and converting to lowercase, and removing any empty tags. This creates a clean, uniform dataset of tags, ready for further analysis and machine learning applications. 
+In the clustering methodology, YouTube video tags are first converted into a numerical format using TF-IDF, which are then clustered using the K-Means algorithm. The high-dimensional data is reduced to three dimensions via PCA for visualization, enabling the clusters to be visually represented in a 3D scatter plot.
+
 
 *Evolution of Vlog videos within "People & Blogs":*
 
@@ -65,10 +68,36 @@ The team plans to follow the timeline below for the project:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Organization within the team
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Organization within the team
+
+Pierre Hellich: helper function definition, data preprocessing, and data exploration.
+
+Martin Nguyen: data exploration, and tag preprocessing/clustering.
+
+Hamza Laarous: data exploration, repository organisation, code refactoring, tag preprocessing/clustering, and README contribution.
+
+Cyril Khoneisser: README/topic definition, and data exploration.
+
+Kamil Mellouk: README outline, and data exploration.
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Contact
+
+Pierre Hellich - [pierre.hellich@epfl.ch](mailto:pierre.hellich@epfl.ch)
+
+Martin Nguyen - [nguyen.martin@epfl.ch](mailto:nguyen.martin@epfl.ch)
+
+Hamza Laarous - [hamza.laarous@epfl.ch](mailto:hamza.laarous@epfl.ch)
+
+Cyril Khoneisser - [cyril.khoneisser@epfl.ch](mailto:cyril.khoneisser@epfl.ch)
+
+Kamil Mellouk - [kamil.mellouk@epfl.ch](mailto:kamil.mellouk@epfl.ch)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
