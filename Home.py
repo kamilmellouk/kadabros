@@ -4,12 +4,12 @@ import numpy as np
 import os
 
 st.set_page_config(
-    page_title="WIP - Youniverse",
-    page_icon="👋",
+    page_title="Kadabros",
+    page_icon="📹",
 )
 
 st.markdown("""
-## Welcome to Youniverse's Data Analysis Story
+## Kadabros' Data Analysis Story on the Youniverse Dataset
 In this data analysis story, we will focus on exploring the dynamics of the "People & Blogs" category on YouTube from 2006 to 2019. This YouTube category encompasses content primarily focused on individuals or groups sharing personal experiences, opinions, and daily activities. It includes a wide range of video types, such as vlogs, lifestyle content, and commentary. The emergence of the "People & Blogs" category can be traced back to the early days of YouTube, gaining prominence as users increasingly sought to share their lives, interests, and perspectives in a more personal and informal manner. This category has since evolved into a diverse space, reflecting the individuality and creativity of content creators within the YouTube community. It remains a vibrant and relevant group, with people rebranding their channels into the genre more and more.
 
 Our analysis delves into the evolution of subcategories within "People & Blogs," investigates how YouTube channels strategically navigate and benefit from subcategory trends, and explores the specific evolution of the Vlog subcategory. Our aim is to understand when and why channels eventually have transitioned into or out of the People & Blogs categories over the past decade, and mostly what consequences the shift had on their audience and popularity.        
@@ -28,5 +28,3 @@ The goal of this research is to get insights on the emergence of the People & Bl
             
             
 """)
-
-st.sidebar.success("Select a demo above.")
