@@ -2,6 +2,23 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+category_colors = {
+    "Science & Technology": "silver",
+    "People & Blogs": "lightcoral",
+    "Entertainment": "olivedrab",
+    "Music": "khaki",
+    "News & Politics": "orange",
+    "Nonprofits & Activism": "palegreen",
+    "Gaming": "peru",
+    "Film & Animation": "skyblue",
+    "Education": "blue",
+    "Howto & Style": "plum",
+    "Pets & Animals": "orchid",
+    "Autos & Vehicles": "crimson",
+    "Comedy": "forestgreen",
+    "Sports": "lavender",
+    "Travel & Events": "teal"
+}
 
 def plot_topN_tag(tag_col, N):
     # Step 1: Split the `tags` column into individual tags and explode the DataFrame.
@@ -127,6 +144,54 @@ def video_likes_and_views(channel_ids, df_feather, channels, start_date=None, en
     plt.ylabel("Like/Views Ratio")
     plt.xlabel("Upload Month")
     plt.title("Like/Views Ratio per Month with Views Indicated by Marker Size")
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+def visualize_evolution_of_channel(channel_id, df_feather, channels, start_date=None, end_date=None, transition_date=None):
+    '''
+    Plots the evolution of video counts across different categories for a given channel.
+
+    Parameters:
+    - channel_id (str): The YouTube channel ID.
+    - df_feather (DataFrame): DataFrame containing video data.
+    - channels (DataFrame): DataFrame containing channel information.
+    - start_date (str, optional): Start date for filtering videos.
+    - end_date (str, optional): End date for filtering videos.
+    - transition_date (str, optional): Date to draw a vertical line indicating the category transition.
+    '''
+
+    channel_name = channels[channels["channel"] == channel_id]["name_cc"].values[0]
+
+    df_filtered = df_feather[df_feather["channel_id"] == channel_id]
+    categories = df_filtered['categories'].unique()
+
+    # Set the full date range for x-axis
+    start_period = pd.to_datetime(start_date).to_period('M') if start_date else df_filtered['year_month'].min()
+    end_period = pd.to_datetime(end_date).to_period('M') if end_date else df_filtered['year_month'].max()
+    full_period_range = pd.period_range(start=start_period, end=end_period, freq='M')
+
+    plt.figure(figsize=(10, 5))
+
+    for category in categories:
+        if category in category_colors:  # Check if the category has a defined color
+            category_color = category_colors[category]
+        else:
+            category_color = 'gray'  # Default color if not defined
+
+        category_data = df_filtered[df_filtered['categories'] == category]
+        category_count = category_data.groupby('year_month').size()
+        category_count = category_count.reindex(full_period_range, fill_value=0)
+        plt.plot(category_count.index.astype(str), category_count.values, marker='o', label=category, color=category_color)
+
+    if transition_date:
+        plt.axvline(x=transition_date, color='r', linestyle='--', label='Transition')
+
+    plt.xticks(rotation=90)
+    plt.ylabel("Number of Videos")
+    plt.xlabel("Year-Month")
+    plt.title(f"Videos of channel {channel_name}")
     plt.legend()
     plt.tight_layout()
     plt.show()
