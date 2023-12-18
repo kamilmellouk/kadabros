@@ -61,11 +61,8 @@ if channel_id:
     df_helper_id = df_helper[df_helper['channel_id'] == channel_id]
 
     visualize_evolution_of_channel(channel_id, df_helper_id, channel_name, start_date_str, end_date_str, transition_date_str)
-    st.pyplot()
-    # video_likes_and_views(channel_id, df_helper_id, channel_name, start_date_str, end_date_str, transition_date_str)
-    # st.pyplot()
-    # video_frequency_and_duration(channel_id, df_helper_id, channel_name, start_date_str, end_date_str, transition_date_str)
-    # st.pyplot()
+    video_likes_and_views(channel_id, df_helper_id, channel_name, start_date_str, end_date_str, transition_date_str)
+    video_frequency_and_duration(channel_id, df_helper_id, channel_name, start_date_str, end_date_str, transition_date_str)
     
     # If using Plotly, you might return the figure from the function and use st.plotly_chart()
     # fig = visualize_evolution_of_channel(channel_id, df_feather, channels_df)
