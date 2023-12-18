@@ -6,3 +6,4 @@
 
 # ignore python cache
 __pycache__/
+notebooks/Martin_eda.ipynb
