@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
-from utils.ploting import visualize_evolution_of_channel, \
-    video_likes_and_views, video_frequency_and_duration
+from utils.inteteractive_plotting import video_frequency_and_duration_int
+from utils.plotting import visualize_evolution_of_channel, \
+    video_likes_and_views
 import os
 
 # Emoji list: http://tinyurl.com/streamlit-emojis
@@ -103,12 +104,12 @@ if channel_name:
                           start_date_str,
                           end_date_str,
                           transition_date_str)
-    video_frequency_and_duration(channel_id,
-                                 df_helper_id,
-                                 channel_name,
-                                 start_date_str,
-                                 end_date_str,
-                                 transition_date_str)
+    video_frequency_and_duration_int(channel_id,
+                                     df_helper_id,
+                                     channel_name,
+                                     start_date_str,
+                                     end_date_str,
+                                     transition_date_str)
 
     # If using Plotly, you might return the figure from the function
     # and use st.plotly_chart()

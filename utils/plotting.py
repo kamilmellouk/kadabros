@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 import streamlit as st
 
-category_colors = {
+CATEGORY_COLORS = {
     "Science & Technology": "silver",
     "People & Blogs": "lightcoral",
     "Entertainment": "olivedrab",
@@ -23,14 +23,10 @@ category_colors = {
 
 
 def plot_topN_tag(tag_col, N):
-    # Step 1: Split the `tags` column into individual
-    # tags and explode the DataFrame.
     tags_exploded = tag_col.str.split(',').explode()
 
-    # Step 2: Count the occurrences of each tag.
     tags_count = tags_exploded.value_counts()
 
-    # Step 3: Sort the results and plot the top 10 tags.
     top_tags = tags_count.head(N)
     top_tags.plot(kind='bar')
     plt.title(f'Top {N} Tags')
@@ -60,7 +56,7 @@ def video_frequency_and_duration(channel_id,
     - transition_date (str, optional): Date to draw a vertical line
                                        indicating the category transition
     """
-    
+
     plt.figure(figsize=(12, 6))
     ax1 = plt.gca()  # Primary axis
     ax2 = ax1.twinx()  # Secondary axis
@@ -73,7 +69,7 @@ def video_frequency_and_duration(channel_id,
     full_period_range = pd.period_range(start=start_period,
                                         end=end_period,
                                         freq='M')
-    
+
     alpha_level = 0.4  # Transparency for the bar plots
 
     mean_duration = df_feather.groupby("year_month")["duration"].mean() / 60
@@ -231,14 +227,15 @@ def visualize_evolution_of_channel(channel_id,
 
     for category in categories:
         # Check if the category has a defined color
-        if category in category_colors:
-            category_color = category_colors[category]
+        if category in CATEGORY_COLORS:
+            category_color = CATEGORY_COLORS[category]
         else:
             category_color = 'gray'  # Default color if not defined
 
         category_data = df_filtered[df_filtered['categories'] == category]
         category_count = category_data.groupby('year_month').size()
-        category_count = category_count.reindex(full_period_range, fill_value=0)
+        category_count = category_count.reindex(full_period_range,
+                                                fill_value=0)
         plt.plot(category_count.index.astype(str),
                  category_count.values,
                  marker='o',
