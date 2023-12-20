@@ -6,18 +6,18 @@ import os
 # Emoji list: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/ 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 easter_eggs = {
-    "TED": "You look like a men of deep culture",
+    "TED": "You look like a man of deep culture",
     "Lady Gaga": "Rah, rah-ah-ah-ah, Roma, roma-ma, Gaga, ooh-la-la, Want your bad romance"
 }
 st.write(
     """
-    Hi! Small demo of our tool to explore Youtube channels. Enjoy :100: \
+    Hi! Here is a small demo of our tool to explore Youtube channels. Enjoy :100: \
     
-    By default the analysis is done on "The LaBrant Fam" channel, which started from funny videos to then vlogging their family life. 
-    They have today 13m subscribers and each for their videos has more than 500k views. \
+    By default the analysis is done on "The LaBrant Fam" channel, which started with funny videos before shifting to vlogging their family life. 
+    They today have 13m subscribers, with all of their videos surpassing 500k views. \
     
-    However don't hesitate to use the tools to explore the evolution of your favorite blogging channel (we have hidden some easter eggs). 
-    Some exemple of famous channels are TED, Lady Gaga...
+    However, don't hesitate to use the tools to explore the evolution of your favorite blogging channel (we have hidden some easter eggs). 
+    Some example of famous channels are TED, Lady Gaga...
     """
 )
 
@@ -81,9 +81,9 @@ if channel_name:
 
     if channel_name == "The LaBrant Fam":
         st.write("""
-                Analyse of The LaBrant Fam
+                Analysis of The LaBrant Fam
                  """) 
     elif channel_name in easter_eggs.keys():
         st.write(easter_eggs[channel_name])
     else: 
-        st.write("Did you think we have that much time to loose to explore every channel? Try another one!")
+        st.write("Did you think we had that much free time to explore every channel? Try another one!")
