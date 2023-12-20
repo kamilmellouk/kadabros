@@ -21,8 +21,10 @@ category_colors = {
     "Travel & Events": "teal"
 }
 
+
 def plot_topN_tag(tag_col, N):
-    # Step 1: Split the `tags` column into individual tags and explode the DataFrame.
+    # Step 1: Split the `tags` column into individual
+    # tags and explode the DataFrame.
     tags_exploded = tag_col.str.split(',').explode()
 
     # Step 2: Count the occurrences of each tag.
@@ -37,51 +39,76 @@ def plot_topN_tag(tag_col, N):
     plt.show()
 
 
-def video_frequency_and_duration(channel_id, df_feather, channel_name, start_date=None, end_date=None, transition_date=None):
+def video_frequency_and_duration(channel_id,
+                                 df_feather,
+                                 channel_name,
+                                 start_date=None,
+                                 end_date=None,
+                                 transition_date=None):
     """
-    Plots the mean video duration per month for given channels, with an optional vertical line indicating a category transition
+    Plots the mean video duration per month for given channels, with an
+    optional vertical line indicating a category transition
     Plot moreover a histogram of the number of videos published.
 
     Parameters:
     - channel_id (str): YouTube channel ID.
-    - df_feather (DataFrame): DataFrame containing video data (already prefiltred).
+    - df_feather (DataFrame): DataFrame containing
+                              video data (already prefiltred).
     - channel name (str)
     - start_date (str, optional): Start date for filtering videos.
     - end_date (str, optional): End date for filtering videos.
-    - transition_date (str, optional): Date to draw a vertical line indicating the category transition
+    - transition_date (str, optional): Date to draw a vertical line
+                                       indicating the category transition
     """
     
-    fig = plt.figure(figsize=(12, 6))
-    ax1 = plt.gca()  # Primary axis 
-    ax2 = ax1.twinx()  # Secondary axis 
+    plt.figure(figsize=(12, 6))
+    ax1 = plt.gca()  # Primary axis
+    ax2 = ax1.twinx()  # Secondary axis
 
     # Establish the full date range for x-axis
-    start_period = pd.to_datetime(start_date).to_period('M') if start_date else df_feather['year_month'].min()
-    end_period = pd.to_datetime(end_date).to_period('M') if end_date else df_feather['year_month'].max()
-    full_period_range = pd.period_range(start=start_period, end=end_period, freq='M')
+    start_period = pd.to_datetime(start_date).to_period('M') if start_date \
+        else df_feather['year_month'].min()
+    end_period = pd.to_datetime(end_date).to_period('M') if end_date \
+        else df_feather['year_month'].max()
+    full_period_range = pd.period_range(start=start_period,
+                                        end=end_period,
+                                        freq='M')
     
     alpha_level = 0.4  # Transparency for the bar plots
 
     mean_duration = df_feather.groupby("year_month")["duration"].mean() / 60
     mean_duration = mean_duration.reindex(full_period_range, fill_value=0)
-    sns.lineplot(ax=ax1, x=mean_duration.index.astype(str), y=mean_duration.values, marker="o", color="blue", label=f"{channel_name}")
+    sns.lineplot(ax=ax1,
+                 x=mean_duration.index.astype(str),
+                 y=mean_duration.values,
+                 marker="o",
+                 color="blue",
+                 label=f"{channel_name}")
 
     video_count = df_feather.groupby("year_month").size()
     video_count = video_count.reindex(full_period_range, fill_value=0)
-    ax2.bar(video_count.index.astype(str), video_count.values, alpha=alpha_level, color="blue")
+    ax2.bar(video_count.index.astype(str),
+            video_count.values,
+            alpha=alpha_level,
+            color="blue")
 
     if transition_date:
         transition_period = pd.to_datetime(transition_date).to_period('M')
-        ax1.axvline(x=str(transition_period), color='r', linestyle='--', label='Transition')
+        ax1.axvline(x=str(transition_period),
+                    color='r',
+                    linestyle='--',
+                    label='Transition')
 
     ax1.set_xlabel("Upload Month")
     ax1.set_ylabel("Mean Video Duration [minutes]", color='black')
     ax2.set_ylabel("Number of Videos", color='black')
     ax1.tick_params(axis='y', colors='black')
-    ax2.tick_params(axis='y', colors='black')
     x_ticks = range(len(full_period_range))
+    ax2.tick_params(axis='y', colors='black')
     ax1.set_xticks(x_ticks)
-    ax1.set_xticklabels([period.strftime('%Y-%m') for period in full_period_range], rotation=90)
+    ax1.set_xticklabels([period.strftime('%Y-%m')
+                         for period in full_period_range],
+                        rotation=90)
 
     lines1, labels1 = ax1.get_legend_handles_labels()
     lines2, labels2 = ax2.get_legend_handles_labels()
@@ -92,44 +119,70 @@ def video_frequency_and_duration(channel_id, df_feather, channel_name, start_dat
     st.pyplot()
 
 
-def video_likes_and_views(channel_id, df_feather, channel_name, start_date=None, end_date=None, transition_date=None):
+def video_likes_and_views(channel_id,
+                          df_feather,
+                          channel_name,
+                          start_date=None,
+                          end_date=None,
+                          transition_date=None):
     """
-    Plots the mean video likes and views per month for given channels, with an optional vertical line indicating the category transition.
-    The y axis represents the number of likes per view ratio, ie have people liked a lot the videos after watching ? 
-    Size of the marker corresponds to the total views, ie have people watched a lot this channel ? 
+    Plots the mean video likes and views per month for given channels,
+    with an optional vertical line indicating the category transition.
+    The y axis represents the number of likes per view ratio,
+    i.e. have people liked a lot the videos after watching?
+    Size of the marker corresponds to the total views,
+    i.e. have people watched a lot this channel?
 
     Parameters:
     - channel_id (str): YouTube channel ID.
-    - df_feather (DataFrame): DataFrame containing video data (already prefiltred).
+    - df_feather (DataFrame): DataFrame containing video
+                            data (already prefiltred).
     - channel name (str)
     - start_date (str, optional): Start date for filtering videos.
     - end_date (str, optional): End date for filtering videos.
-    - transition_date (str, optional): Date to draw a vertical line indicating the category transition
+    - transition_date (str, optional): Date to draw a vertical line
+                                        indicating the category transition
     """
-    
-    fig = plt.figure(figsize=(10, 6))
-    
+
+    plt.figure(figsize=(10, 6))
+
     # Establish the full date range for x-axis
-    start_period = pd.to_datetime(start_date).to_period('M') if start_date else df_feather['year_month'].min()
-    end_period = pd.to_datetime(end_date).to_period('M') if end_date else df_feather['year_month'].max()
-    full_period_range = pd.period_range(start=start_period, end=end_period, freq='M')
+    start_period = pd.to_datetime(start_date).to_period('M') if start_date \
+        else df_feather['year_month'].min()
+    end_period = pd.to_datetime(end_date).to_period('M') if end_date \
+        else df_feather['year_month'].max()
+    full_period_range = pd.period_range(start=start_period,
+                                        end=end_period,
+                                        freq='M')
 
     df_filtered = df_feather.groupby("year_month").agg({
         "like_count": "mean",
-        "dislike_count" : "mean",
+        "dislike_count": "mean",
         "view_count": "mean"
     })
 
-    df_filtered["like_over_views_ratio"] = df_filtered["like_count"] / df_filtered["view_count"]
+    df_filtered["like_over_views_ratio"] = (df_filtered["like_count"] /
+                                            df_filtered["view_count"])
     df_filtered = df_filtered.reindex(full_period_range, fill_value=0)
-        
+
     # Normalize mean views to scale marker sizes
-    scaled_marker_size = (df_filtered["view_count"] - df_filtered["view_count"].min()) / (df_filtered["view_count"].max() - df_filtered["view_count"].min()) * 100
-        
-    plt.scatter(df_filtered.index.astype(str), df_filtered["like_over_views_ratio"], s=scaled_marker_size, label=channel_name, alpha=0.6, color="blue") # , color=colors[channel_id]
+    scaled_marker_size = ((df_filtered["view_count"]
+                          - df_filtered["view_count"].min()) /
+                          (df_filtered["view_count"].max() -
+                           df_filtered["view_count"].min()) * 100)
+
+    plt.scatter(df_filtered.index.astype(str),
+                df_filtered["like_over_views_ratio"],
+                s=scaled_marker_size,
+                label=channel_name,
+                alpha=0.6,
+                color="blue")   # , color=colors[channel_id]
 
     if transition_date:
-        plt.axvline(x=transition_date, color='r', linestyle='--', label='Transition')
+        plt.axvline(x=transition_date,
+                    color='r',
+                    linestyle='--',
+                    label='Transition')
 
     plt.xticks(rotation=90)
     plt.ylabel("Like/Views Ratio")
@@ -140,9 +193,15 @@ def video_likes_and_views(channel_id, df_feather, channel_name, start_date=None,
     st.pyplot()
 
 
-def visualize_evolution_of_channel(channel_id, df_feather, channel_name, start_date=None, end_date=None, transition_date=None):
+def visualize_evolution_of_channel(channel_id,
+                                   df_feather,
+                                   channel_name,
+                                   start_date=None,
+                                   end_date=None,
+                                   transition_date=None):
     '''
-    Plots the evolution of video counts across different categories for a given channel.
+    Plots the evolution of video counts across different
+    categories for a given channel.
 
     Parameters:
     - channel_id (str): The YouTube channel ID.
@@ -150,22 +209,29 @@ def visualize_evolution_of_channel(channel_id, df_feather, channel_name, start_d
     - channels (DataFrame): DataFrame containing channel information.
     - start_date (str, optional): Start date for filtering videos.
     - end_date (str, optional): End date for filtering videos.
-    - transition_date (str, optional): Date to draw a vertical line indicating the category transition.
+    - transition_date (str, optional): Date to draw a vertical line
+                                        indicating the category transition.
     '''
 
     # df_filtered = df_feather[df_feather["channel_id"] == channel_id]
-    df_filtered = df_feather # now df_feather is already pre filtred by the channel id
+    df_filtered = df_feather
+    # now df_feather is already pre filtred by the channel id
     categories = df_filtered['categories'].unique()
 
     # Set the full date range for x-axis
-    start_period = pd.to_datetime(start_date).to_period('M') if start_date else df_filtered['year_month'].min()
-    end_period = pd.to_datetime(end_date).to_period('M') if end_date else df_filtered['year_month'].max()
-    full_period_range = pd.period_range(start=start_period, end=end_period, freq='M')
+    start_period = pd.to_datetime(start_date).to_period('M') if start_date \
+        else df_filtered['year_month'].min()
+    end_period = pd.to_datetime(end_date).to_period('M') if end_date \
+        else df_filtered['year_month'].max()
+    full_period_range = pd.period_range(start=start_period,
+                                        end=end_period,
+                                        freq='M')
 
-    fig = plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(10, 5))
 
     for category in categories:
-        if category in category_colors:  # Check if the category has a defined color
+        # Check if the category has a defined color
+        if category in category_colors:
             category_color = category_colors[category]
         else:
             category_color = 'gray'  # Default color if not defined
@@ -173,10 +239,17 @@ def visualize_evolution_of_channel(channel_id, df_feather, channel_name, start_d
         category_data = df_filtered[df_filtered['categories'] == category]
         category_count = category_data.groupby('year_month').size()
         category_count = category_count.reindex(full_period_range, fill_value=0)
-        plt.plot(category_count.index.astype(str), category_count.values, marker='o', label=category, color=category_color)
+        plt.plot(category_count.index.astype(str),
+                 category_count.values,
+                 marker='o',
+                 label=category,
+                 color=category_color)
 
     if transition_date:
-        plt.axvline(x=transition_date, color='r', linestyle='--', label='Transition')
+        plt.axvline(x=transition_date,
+                    color='r',
+                    linestyle='--',
+                    label='Transition')
 
     plt.xticks(rotation=90)
     plt.ylabel("Number of Videos")
