@@ -11,7 +11,7 @@ LDA_PATH = os.path.join(WEB_DATA, 'lda.html')
 
 st.write(
     """
-    This demo shows how to use `st.write` to visualize Pandas DataFrames.
+    Now, let us turn to the question on how YouTube channels within the category of People & Blogs leverage the popularity of their respective subcategories. But first, how can a subcategory defined? Follow us, as we unveil this by exploring the tags and how they are used in this context!
     """
 )
 
