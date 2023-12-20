@@ -52,12 +52,6 @@ The goal of this research is to get insights on the emergence of the
             categories fare after the transition ? E.g. how was a channel's
             popularity affected after migrating from Gaming to Vlog ?
 
-            
-## Data Sources         
-This data story relies on the Youniverse dataset, made available by [Manoel Horeira](https://zenodo.org/records/4650046). This comprehensive repository encompasses YouTube channel data spanning the last decade (2005-2019). It encapsulates key metrics such as views, likes, comments, subscriber counts, and video metadata. The dataset's breadth and depth make it an ideal choice for our analysis, enabling a nuanced exploration of channel transitions within the People & Blogs category.
-            
-""")
-
 ## Data Sources
 This data story relies on the Youniverse dataset, made available by
             [Manoel Horeira](https://zenodo.org/records/4650046).
