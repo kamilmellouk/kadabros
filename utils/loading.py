@@ -10,7 +10,7 @@ def load_and_filter_jsonl_gz_file_by_chunks(filepath,
                                             chunk_size=10000,
                                             exclude_fields=None):
     '''
-    Spefcify the chunk size and the fiels to exclude or not if needed. 
+    Spefcify the chunk size and the fiels to exclude or not if needed.
     Return the video matedatas of video include in the global variable category
     '''
     if exclude_fields is None:

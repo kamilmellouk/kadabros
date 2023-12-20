@@ -44,10 +44,12 @@ def channel_id_from_channel_name(channel_name):
 LOCAL_PATH = os.getcwd()
 WEB_DATA = os.path.join(LOCAL_PATH, 'website_data')
 PEOPLE_BLOGS_PATH = os.path.join(WEB_DATA, 'People_&_Blogs')
-df_channels, df_helper = load_data(os.path.join(PEOPLE_BLOGS_PATH,
-                                                'df_PB_channels.csv.gz'),
-                                   os.path.join(PEOPLE_BLOGS_PATH,
-                                                'df_PB_helper.feather'))
+TOP_1000_PATH = os.path.join(PEOPLE_BLOGS_PATH, 'top_1000')
+
+df_channels, df_helper = load_data(os.path.join(TOP_1000_PATH,
+                                                'df_top_1000_channels.csv.gz'),
+                                   os.path.join(TOP_1000_PATH,
+                                                'df_top_1000_helper.feather'))
 
 default_channel_index = df_channels['name_cc'].unique()\
                                             .tolist()\
@@ -118,7 +120,7 @@ if channel_name:
     if channel_name == "The LaBrant Fam":
         st.write("""
                 Analysis of The LaBrant Fam
-                 """) 
+                 """)
     elif channel_name in easter_eggs.keys():
         st.write(easter_eggs[channel_name])
     else:
