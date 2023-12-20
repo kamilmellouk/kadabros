@@ -40,7 +40,8 @@ def video_frequency_and_duration(channel_id,
                                  channel_name,
                                  start_date=None,
                                  end_date=None,
-                                 transition_date=None):
+                                 transition_date=None, 
+                                 streamlit_plot=True):
     """
     Plots the mean video duration per month for given channels, with an
     optional vertical line indicating a category transition
@@ -112,7 +113,10 @@ def video_frequency_and_duration(channel_id,
 
     plt.title("Mean Video Duration and Video Count per Month")
     plt.tight_layout()
-    st.pyplot()
+    if streamlit_plot:
+        st.pyplot()
+    else:
+        plt.show()
 
 
 def video_likes_and_views(channel_id,
@@ -120,7 +124,8 @@ def video_likes_and_views(channel_id,
                           channel_name,
                           start_date=None,
                           end_date=None,
-                          transition_date=None):
+                          transition_date=None, 
+                          streamlit_plot=True):
     """
     Plots the mean video likes and views per month for given channels,
     with an optional vertical line indicating the category transition.
@@ -186,7 +191,10 @@ def video_likes_and_views(channel_id,
     plt.title("Like/Views Ratio per Month with Views Indicated by Marker Size")
     plt.legend()
     plt.tight_layout()
-    st.pyplot()
+    if streamlit_plot:
+        st.pyplot()
+    else:
+        plt.show()
 
 
 def visualize_evolution_of_channel(channel_id,
@@ -194,7 +202,8 @@ def visualize_evolution_of_channel(channel_id,
                                    channel_name,
                                    start_date=None,
                                    end_date=None,
-                                   transition_date=None):
+                                   transition_date=None, 
+                                   streamlit_plot=True):
     '''
     Plots the evolution of video counts across different
     categories for a given channel.
@@ -254,4 +263,7 @@ def visualize_evolution_of_channel(channel_id,
     plt.title(f"Videos of channel {channel_name}")
     plt.legend()
     plt.tight_layout()
-    st.pyplot()
+    if streamlit_plot:
+        st.pyplot()
+    else:
+        plt.show()

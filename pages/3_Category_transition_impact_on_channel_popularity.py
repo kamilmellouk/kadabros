@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
-from utils.inteteractive_plotting import video_frequency_and_duration_int
-from utils.plotting import visualize_evolution_of_channel, \
-    video_likes_and_views
+from utils.inteteractive_plotting import visualize_evolution_of_channel, \
+    video_frequency_and_duration, video_likes_and_views
 import os
 
 # Emoji list: http://tinyurl.com/streamlit-emojis
@@ -68,7 +67,7 @@ time_range = pd.period_range(start=pd.to_datetime("2015-01"),
 time_range_str = time_range.strftime('%Y-%m').tolist()
 time_range_str_desc = time_range.sort_values(ascending=False)\
                                 .strftime('%Y-%m').tolist()
-default_start_date_index = time_range_str.index("2016-09")
+default_start_date_index = time_range_str.index("2015-09")
 default_end_date_index = time_range_str_desc.index("2019-09")
 default_transition_date_index = time_range_str.index("2018-02")
 start_date_str = st.selectbox(
@@ -82,7 +81,7 @@ end_date_str = st.selectbox(
     index=default_end_date_index
 )
 transition_date_str = st.selectbox(
-    'Select a date that marks the transition of category',
+    'Select a date that marks the transition of category :clipboard:',
     time_range_str,
     index=None,
     disabled=False
@@ -92,24 +91,20 @@ if channel_name:
 
     df_helper_id = df_helper[df_helper['channel_id'] == channel_id]
 
-    visualize_evolution_of_channel(channel_id,
-                                   df_helper_id,
+    visualize_evolution_of_channel(df_helper_id,
                                    channel_name,
                                    start_date_str,
                                    end_date_str,
                                    transition_date_str)
-    video_likes_and_views(channel_id,
-                          df_helper_id,
+    video_likes_and_views(df_helper_id,
                           channel_name,
                           start_date_str,
                           end_date_str,
                           transition_date_str)
-    video_frequency_and_duration_int(channel_id,
-                                     df_helper_id,
-                                     channel_name,
-                                     start_date_str,
-                                     end_date_str,
-                                     transition_date_str)
+    video_frequency_and_duration(df_helper_id,
+                                 start_date_str,
+                                 end_date_str,
+                                 transition_date_str)
 
     # If using Plotly, you might return the figure from the function
     # and use st.plotly_chart()
