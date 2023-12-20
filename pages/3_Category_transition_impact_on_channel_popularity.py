@@ -118,7 +118,7 @@ if channel_name:
     if channel_name == "The LaBrant Fam":
         st.write("""
                 Analysis of The LaBrant Fam
-                 """)
+                 """) 
     elif channel_name in easter_eggs.keys():
         st.write(easter_eggs[channel_name])
     else:
