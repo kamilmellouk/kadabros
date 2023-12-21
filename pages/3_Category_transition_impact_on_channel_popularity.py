@@ -5,7 +5,6 @@ from utils.inteteractive_plotting import visualize_evolution_of_channel, \
 import os
 
 # Emoji list: http://tinyurl.com/streamlit-emojis
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 easter_eggs = {
     "TED": "You look like a man of deep culture",
@@ -33,6 +32,7 @@ st.write(
     You are giving you access to our exploration tools over the channels. 
     We filtered the channels to keep only the top 1000 channels of the People & Blogs category (ranked by number of subscribers).
     Go check your favorite YouTube channel, like Ted :books:, Casey Neistat :sunglasses: or Lady Gaga :notes:. We even prepared some easter eggs for you! :gift: 
+    Go also check other interessing transitionning channels like BUzzFeedVideo.
     """
 ) # Go also check other interessing transitionning channels like Joey Graceffa and ???.
 
@@ -75,9 +75,8 @@ time_range = pd.period_range(start=pd.to_datetime("2015-01"),
 time_range_str = time_range.strftime('%Y-%m').tolist()
 time_range_str_desc = time_range.sort_values(ascending=False)\
                                 .strftime('%Y-%m').tolist()
-default_start_date_index = time_range_str.index("2015-09")
+default_start_date_index = time_range_str.index("2015-01")
 default_end_date_index = time_range_str_desc.index("2019-09")
-default_transition_date_index = time_range_str.index("2018-02")
 start_date_str = st.selectbox(
     'Select the start of the time window :soon:',
     time_range_str,
@@ -99,6 +98,9 @@ df_helper_id = df_helper[df_helper['channel_id'] == channel_id]
 
 if channel_name == "The LaBrant Fam":
 
+    
+    transition_date = "2018-02"
+
     st.write("""## The LaBrant Family evolution""")
     st.write("""Analyzing the following charts, we can observe the evolution of the YouTube channel showing the life of the LaBrant family over time. We will focus on the transition from comedy to vlogging in February 2018 and the changes in video characteristics before and after this shift.""")
     
@@ -107,7 +109,7 @@ if channel_name == "The LaBrant Fam":
                                    channel_name,
                                    start_date_str,
                                    end_date_str,
-                                   transition_date_str)
+                                   transition_date)
     st.write("""This first chart indicates a pivotal change in February 2018, where the video category shifted from Comedy to People & Blogs. Before this shift, the channel's focus on comedy yielded a relatively stable output of videos, with the count fluctuating slightly but generally showing a consistent presence.""")
     st.write("""
              Indeed, Cole, the father, gained first popularity on the social media Vine. 
@@ -133,7 +135,7 @@ if channel_name == "The LaBrant Fam":
                           channel_name,
                           start_date_str,
                           end_date_str,
-                          transition_date_str)
+                          transition_date)
     st.write("""The second chart provides insight into the like-to-view percentage, with larger markers indicating months with higher view counts.
              This ratio serves as a useful metric for gauging the positive impact a video has on viewers during its viewing.""")
     st.write("""
@@ -153,7 +155,7 @@ if channel_name == "The LaBrant Fam":
     video_frequency_and_duration(df_helper_id,
                                  start_date_str,
                                  end_date_str,
-                                 transition_date_str)
+                                 transition_date)
     st.write("""The third chart shows both the mean video duration and the count of videos per month. 
              There's a clear upward trend in video duration over time, indicating that the channel's videos became longer on average, which is common in vlogging content as it tends to cover daily life events that require longer footage.""")
     st.write("""
