@@ -5,28 +5,36 @@ from utils.inteteractive_plotting import visualize_evolution_of_channel, \
 import os
 
 # Emoji list: http://tinyurl.com/streamlit-emojis
-st.set_option('deprecation.showPyplotGlobalUse', False)
+
 easter_eggs = {
     "TED": "You look like a man of deep culture",
     "Lady Gaga": "Rah, rah-ah-ah-ah, Roma, roma-ma, Gaga, ooh-la-la, Want your\
-          bad romance"
+          bad romance",
+    "CaseyNeistat": "Did you see his last video? It's crazy isn't it?!",
+    "123GO!": "Are you sure you are not too old for that?",
+    "Jake Paul": "Is he more a boxer or a youtuber now?",
+    "1 Million Creation": "Best youtube channel : https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "WhispersRed ASMR": "Are you lost too?"
 }
+
+st.write("""# Category transition impact analysis""")
 st.write(
     """
-    Hi! Here is a small demo of our tool to explore Youtube channels. \
-        Enjoy :100:
-
-    By default the analysis is done on "The LaBrant Fam" channel,\
+    By default the charts are showing the data of "The LaBrant Fam" channel,\
         which started with funny videos before shifting to vlogging\
-        their family life.
+        their family life. The suburban familly originaly from California have now turned Tennessee, and is very close to their community.
     They today have 13m subscribers, with all of their videos surpassing\
-        500k views. \
-
-    However, don't hesitate to use the tools to explore the evolution of your\
-        favorite blogging channel (we have hidden some easter eggs).
-    Some example of famous channels are TED, Lady Gaga...
+        1 million views. \
     """
 )
+st.write(
+    """
+    You are giving you access to our exploration tools over the channels. 
+    We filtered the channels to keep only the top 1000 channels of the People & Blogs category (ranked by number of subscribers).
+    Go check your favorite YouTube channel, like Ted :books:, Casey Neistat :sunglasses: or Lady Gaga :notes:. We even prepared some easter eggs for you! :gift: 
+    Go also check other interessing transitionning channels like BUzzFeedVideo.
+    """
+) # Go also check other interessing transitionning channels like Joey Graceffa and ???.
 
 
 @st.cache_data
@@ -55,7 +63,7 @@ default_channel_index = df_channels['name_cc'].unique()\
                                             .tolist()\
                                             .index("The LaBrant Fam")
 channel_name = st.selectbox(
-    ':red[Select a YouTube Channel] :popcorn:',
+    ':violet[Select a YouTube Channel] :popcorn:',
     df_channels['name_cc'].unique(),
     index=default_channel_index
 )
@@ -67,9 +75,8 @@ time_range = pd.period_range(start=pd.to_datetime("2015-01"),
 time_range_str = time_range.strftime('%Y-%m').tolist()
 time_range_str_desc = time_range.sort_values(ascending=False)\
                                 .strftime('%Y-%m').tolist()
-default_start_date_index = time_range_str.index("2015-09")
+default_start_date_index = time_range_str.index("2015-01")
 default_end_date_index = time_range_str_desc.index("2019-09")
-default_transition_date_index = time_range_str.index("2018-02")
 start_date_str = st.selectbox(
     'Select the start of the time window :soon:',
     time_range_str,
@@ -87,9 +94,89 @@ transition_date_str = st.selectbox(
     disabled=False
 )
 
-if channel_name:
+df_helper_id = df_helper[df_helper['channel_id'] == channel_id]
 
-    df_helper_id = df_helper[df_helper['channel_id'] == channel_id]
+if channel_name == "The LaBrant Fam":
+
+    
+    transition_date = "2018-02"
+
+    st.write("""## The LaBrant Family evolution""")
+    st.write("""Analyzing the following charts, we can observe the evolution of the YouTube channel showing the life of the LaBrant family over time. We will focus on the transition from comedy to vlogging in February 2018 and the changes in video characteristics before and after this shift.""")
+    
+    st.write("""### 1. Category Shift Impact: """)
+    visualize_evolution_of_channel(df_helper_id,
+                                   channel_name,
+                                   start_date_str,
+                                   end_date_str,
+                                   transition_date)
+    st.write("""This first chart indicates a pivotal change in February 2018, where the video category shifted from Comedy to People & Blogs. Before this shift, the channel's focus on comedy yielded a relatively stable output of videos, with the count fluctuating slightly but generally showing a consistent presence.""")
+    st.write("""
+             Indeed, Cole, the father, gained first popularity on the social media Vine. 
+             He then met his wife Savannah at 19 years old and transitioned over YouTube. 
+             They began with fun video, in line with their Vine videos. 
+             **Before the transition**, the chart show a consitent presence on the plateform with 8 videos by month in average. 
+             That can results from a consistent production schedule. 
+             2016 is a period where first YouTube creators began to live from their videos.
+             You can still look at their YouTube channel to see them (for those not deleted) : `FAMILY BAKING PRANK WAR`, `DRIVING WITH CIKE | MCDONALDS ROMANCE?!` and `BLINDFOLD TASTE CHALLENGE WITH 3 YEAR OLD!!`.
+             """)
+    st.write("""         
+             **After the transition**, there's a significant increase in video production. The number of vlogs rises sharply and stabilizes at a higher level than the comedy videos (around 13 by month).
+             Vlogging allows for more spontaneous content creation and potentially less production time compared to funny video, which might explain the increased output.
+             The consistency and frequency of uploading suggest a strategic decision to engage more frequently with the audience. 
+             It allows to build a more personal connection with viewers. 
+             The transition might also reveal a voluntee to produce something more coherent with their family life.
+             Some exemples of videos uploaded in 2019 are `our Vegas trip did not go as planned` and `We Caught Everleigh Lying To Us...`.
+             We can observe that videos titled are also reflecting the transitionning, going from uppercase to lowercase, more realistic for their fans.
+             """)
+
+    st.write("""### 2. Video Characteristics Evolution:""")   
+    video_likes_and_views(df_helper_id,
+                          channel_name,
+                          start_date_str,
+                          end_date_str,
+                          transition_date)
+    st.write("""The second chart provides insight into the like-to-view percentage, with larger markers indicating months with higher view counts.
+             This ratio serves as a useful metric for gauging the positive impact a video has on viewers during its viewing.""")
+    st.write("""
+             **Before the transition**, the like-to-view ratio was varied before July 2016, with some months achieving ratios over 3.5%, likely due to specific comedy videos resonating with the audience.
+             Between July 2016 and the transition in February 2018, the impact of the videos on the comunity stabilizes at a low level, around 1%.
+             We can also see bigger marker, which means more views during this pre-transition period. 
+             For example, the wedding video uploaded in July 2017 cumulates today over 50 millions of views. 
+             This shows that their content was reaching a wider viewership than after the transition.
+             """)
+    st.write("""    
+             **After transitioning**, it appears that the like-to-view ratio experiences a slight upward trend, but the number of views is decreasing compared to early buzz. 
+             The loyal fan base remains, finding greater enjoyment in videos that showcase the intimate aspects of family life. 
+             Viewers are becoming more connected to each member of the family, as they see the kids growing.
+             """)
+
+    st.write("""### 3. Video Duration and Production Volume:""")
+    video_frequency_and_duration(df_helper_id,
+                                 start_date_str,
+                                 end_date_str,
+                                 transition_date)
+    st.write("""The third chart shows both the mean video duration and the count of videos per month. 
+             There's a clear upward trend in video duration over time, indicating that the channel's videos became longer on average, which is common in vlogging content as it tends to cover daily life events that require longer footage.""")
+    st.write("""
+    **Before the transition**, the video duration varied but stayed within a lower range of less than 10 minutes. 
+             This is typical for comedy content, which tends to be shorter to be attractive.
+             The plafonning of video duration at 10 minutes starting from the end of 2017 also correspond to the double advertising before the video if it's longer than 10 minutes.  
+    """)
+    st.write("""
+    **After the transition,** not only did the number of videos increase, but the average duration also increased. 
+             This suggests a strategic choice to provide more in-depth content about the intimate life of Cole, Savannah, and their childs. 
+             The steady increase in video length could also reflect the channel's confidence in retaining viewer attention for longer periods, a sign of a maturing content strategy and growing audience engagement.
+    """)
+
+    st.write("""### Conclusion""")
+    st.write("""
+    The transition from comedy to vlogging has had a significant impact on "The LaBrant Fam" channel. The shift led to increased video output and longer content, which aligns with the more personal and confessional strategy of the family. 
+             The increase in the like-to-view ratio post-transition suggests that the audience received the new content direction positively. 
+             Overall, the transition appears to have been successful for our favorite family, with the channel adapting its content to meet audience preferences and possibly to align with broader trends in viewer engagement on YouTube.
+    """)
+
+else: 
 
     visualize_evolution_of_channel(df_helper_id,
                                    channel_name,
@@ -105,20 +192,8 @@ if channel_name:
                                  start_date_str,
                                  end_date_str,
                                  transition_date_str)
-
-    # If using Plotly, you might return the figure from the function
-    # and use st.plotly_chart()
-    # fig = visualize_evolution_of_channel(channel_id, df_feather, channels_df)
-    # st.plotly_chart(fig)
-
-    st.write("""## Analysis of channel evolution:""")
-
-    if channel_name == "The LaBrant Fam":
-        st.write("""
-                Analysis of The LaBrant Fam
-                 """)
-    elif channel_name in easter_eggs.keys():
+    
+    if channel_name in easter_eggs.keys():
         st.write(easter_eggs[channel_name])
     else:
-        st.write("Did you think we had that much free time to explore every\
-                  channel? Try another one!")
+        st.write("""Hello ADA explorer. I hope that you are enjoying the moment. Let's try another channel!""")
