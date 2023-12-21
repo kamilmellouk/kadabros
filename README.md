@@ -65,7 +65,9 @@ The team plans to follow the timeline below for the project:
 * `data_youniverse` folder: Given that our data is very large, we chose not to version control this folder. We will chose to name this folder `data_youniverse` and this will be the data path we will be working with.
 * `utils folder`: Contains helper methods for our exploration.
 * `notebooks`: Contains individual notebooks developed during the initial exploratory phase.
-* `eda.ipynb`: Contains the main EDA of the data for our story.
+* `Home.py` file and `pages/` folder: these encompass the main logic for our website.
+* `website_data/`: this folder contains the data and plots used for our `DataStory website`.
+* `Milestone_3.ipynb`: Contains the main EDA of the data for our story.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -73,16 +75,29 @@ The team plans to follow the timeline below for the project:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Organization within the team
+- Milestone 2:
+    - Pierre Hellich: helper function definition, data preprocessing, and data exploration.
 
-Pierre Hellich: helper function definition, data preprocessing, and data exploration.
+    - Martin Nguyen: data exploration, and tag preprocessing/clustering.
 
-Martin Nguyen: data exploration, and tag preprocessing/clustering.
+     - Hamza Laarous: data exploration, repository organisation, code refactoring, tag preprocessing/clustering, and README contribution.
 
-Hamza Laarous: data exploration, repository organisation, code refactoring, tag preprocessing/clustering, and README contribution.
+    - Cyril Khoneisser: README/topic definition, and data exploration.
 
-Cyril Khoneisser: README/topic definition, and data exploration.
+    - Kamil Mellouk: README outline, and data exploration.
 
-Kamil Mellouk: README outline, and data exploration.
+- Milestone 3
+    - Pierre Hellich: Category Transition Impact Analysis - plotting, analysis, and website contribution.
+
+    - Martin Nguyen: Tag Semantics - plotting, analysis, and website contribution.
+
+    - Hamza Laarous: updating README with milestone 3 details, interactive plotting for category transition impact analysis, website contribution, and final notebook definition.
+
+    - Cyril Khoneisser: General People and Blogs Overview - plotting, analysis, and website contribution.
+
+    - Kamil Mellouk: Website setup and deployment.
+
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
