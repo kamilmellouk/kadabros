@@ -113,7 +113,7 @@ if channel_name == LABRANT_FAM:
     st.write("""Analyzing the following charts, we observe the evolution of a\
              YouTube channel, here showcasing the dynamics of the LaBrant\
              family account over time. We will focus on their transition\
-             from comedy to vlogging in January 2018, as well as the changes\
+             from comedy to vlogging in February 2018, as well as the changes\
              in video characteristics before and after this shift.""")
 
     st.write("""#### 1. Category Shift Impact: """)
@@ -125,12 +125,9 @@ visualize_evolution_of_channel(df_helper_id,
                                transition_date_str)
 
 if channel_name == LABRANT_FAM:
-    st.write("""This first chart indicates a pivotal change in January 2018,\
+    st.write("""This first chart indicates a pivotal change in February 2018,\
              where the predominant video category first move from Comedy to\
-             People & Blogs.
-             By looking more into details at the YouTube channel, we notice\
-             that the new content direction took place before the switch of\
-             the videos categories, around July 2017""")
+             People & Blogs.""")
     st.write("""
              Indeed, Cole, the father, first gained popularity on the social\
              media Vine.
@@ -185,7 +182,7 @@ if channel_name == LABRANT_FAM:
              **Before the transition**, the like-to-view ratio was varied\
              before July 2016, with some months achieving ratios over 3.5%,\
              likely due to specific comedy videos resonating with the audience.
-             Between July 2016 and the transition defined in January 2018,\
+             Between July 2016 and the transition defined in February 2018,\
              the impact of the videos on the comunity stabilizes\
              at a low level, around 1%.
              We can also see bigger markers, which means more views during\
