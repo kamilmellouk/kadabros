@@ -87,10 +87,13 @@ end_date_str = st.selectbox(
     time_range_str_desc,
     index=default_end_date_index
 )
+default_tr_date_str = time_range_str.index("2018-02") \
+                            if channel_name == "The LaBrant Fam" else None
+
 transition_date_str = st.selectbox(
     'Select a date that marks the transition of category :clipboard:',
     time_range_str,
-    index=None,
+    index=default_tr_date_str,
     disabled=False
 )
 
@@ -99,7 +102,6 @@ df_helper_id = df_helper[df_helper['channel_id'] == channel_id]
 if channel_name == "The LaBrant Fam":
 
     
-    transition_date = "2018-01"
 
     st.write("""## The LaBrant Family evolution""")
     st.write("""Analyzing the following charts, we can observe the evolution of the YouTube channel showing the life of the LaBrant family over time. We will focus on the transition from comedy to vlogging in January 2018 and the changes in video characteristics before and after this shift.""")
@@ -109,7 +111,7 @@ if channel_name == "The LaBrant Fam":
                                    channel_name,
                                    start_date_str,
                                    end_date_str,
-                                   transition_date)
+                                   transition_date_str)
     st.write("""This first chart indicates a pivotal change in January 2018, where the video category shifted from Comedy to People & Blogs. 
              By looking more into details to the YouTube channel, we observe that the new content direction took place before the switch of the videos categories, around July 2017""")
     st.write("""
@@ -136,7 +138,7 @@ if channel_name == "The LaBrant Fam":
                           channel_name,
                           start_date_str,
                           end_date_str,
-                          transition_date)
+                          transition_date_str)
     st.write("""The second chart provides insight into the like-to-view percentage, with larger markers indicating months with higher view counts.
              This ratio serves as a useful metric for gauging the positive impact a video has on viewers during its viewing.""")
     st.write("""
@@ -156,7 +158,7 @@ if channel_name == "The LaBrant Fam":
     video_frequency_and_duration(df_helper_id,
                                  start_date_str,
                                  end_date_str,
-                                 transition_date)
+                                 transition_date_str)
     st.write("""The third chart shows both the mean video duration and the count of videos per month. 
              There's a clear upward trend in video duration over time, indicating that the channel's videos became longer on average, which is common in vlogging content as it tends to cover daily life events that require longer footage.""")
     st.write("""
