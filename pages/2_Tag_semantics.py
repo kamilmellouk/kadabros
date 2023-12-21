@@ -125,8 +125,9 @@ and yields a distribution of categories across the elements being analyzed. Alth
 probabilities indicating the likelihood of a tag being associated with a specific topic, rather than just placing it in a cluster. 
 If you're interested in the math behind LDA, have a look at this [link](https://www.analyticsvidhya.com/blog/2021/08/a-brief-introduction-to-linear-discriminant-analysis/)!\n
 
-We opted to train our LDA model using a specified number of topics, choosing 15 for our analysis as this showed the best distinct clustering. 
-This training was conducted on a carefully selected random sample comprising 150,000 tags, all drawn from the People & Blogs category. Below you can interact with our LDA model! 
+We opted to train our LDA model using a specified number of topics, choosing 10 for our analysis as this showed the best distinct clustering. 
+This training was conducted on a carefully selected random sample comprising 150,000 tags, all drawn from the People & Blogs category. \n 
+Below you can interact with our LDA model! 
 
 """
 )
@@ -138,26 +139,41 @@ components.v1.html(html_string, width=1400, height=800, scrolling=False)
 
 st.markdown(
 """
-Upon examining the outcomes from our LDA model, we have identified the 30 most salient terms from our extensive sample of 150,000 tags in the People & Blogs category. 
-To further clarify and enhance our understanding, we have also compiled a 'topic' lookup table: 
-- Item 1
-- Item 2
-- Item 3
+After analyzing the results from our LDA model, 
+we have pinpointed the top 30 key terms from a large dataset of 150,000 tags used in the People & Blogs category. 
+To deepen our understanding and provide clearer insights, we have also created a 'topic' lookup table for reference.
+ 
+1. **Lifestyle**: tags like `fitness`, `health`, `diet` and alike indicate a subcategory of lifestyle content.
+2. **Family**: tags like `family`, `kids`, `baby` and alike indicate a subcategory of family-oriented content.
+3. **Astrology**: listing all the horoscope signs as relevant terms, this topic indicates a subcategory of astrology content.
+4. **Beauty**: beauty related tags seem to dominate the topic, implying a subcategory of beauty content.
+5. **Entertainment**: `comedy`, `gaming`, `movie` seem to represent a broad range of entertainment.
+6. **Food**: `cooking`, `food`, `recipe` represent a topic of food-related content.
+7. **Social Media**: predominantly social medias this topic represents a subcategory of social media content.
+8. **ASMR/Mukbang**: `asmr`, `mukbang` and alike represent a subcategory of ASMR/Mukbang content.
+9. **News**: news orientied tags that seems to focus around `police`, `crime` and alike. 
+10. **Book**: books and an interesting tag called `booktube` represent a subcategory of book content.
 """
 )
 
+st.write(
+    """
+    The People & Blogs category on YouTube is notably diverse, yet distinct subcategories emerge when analyzing tags through the LDA model. 
+    While increasing the predefined number of topics could reveal more subcategories, a consistent finding is that nearly every distinct topic 
+    includes some variation of "vlog." This suggests that vlogging is a prevalent content format within the People & Blogs category, with each 
+    subcategory representing a variation of vlogging, distinguished by its unique content focus.
+    """     
+)
 
 st.subheader('So... How Do The Most Subscribed Content Creators Within People & Blogs Use Their Tags ?')
 
 st.write(
     """
-    As we try to understand the most used tags within the People & Blogs category,
-    we should also take a look at how the most subscribed content creators within this category use their tags.
-    For this purpose, we will take a look at the top 10 most subscribed content creators within the People & Blogs category.
-    These include a variety of content creators such as Jake Paul, Casey Neistat, BuzzfeedVideo, TedTalks and more. \n
-    
-    The Word Cloud works by sizing the tags based on their frequency:: 
-    the more frequently a tag appears, the larger and bolder it is displayed. 
+    Given the discovery that subcategories within the People & Blogs category on YouTube largely consist of vlogging variations with distinct 
+    content focuses, we will now explore the tagging strategies employed by the platform's most popular influencers in this category. For this 
+    purpose, we will take a look at the top 10 most subscribed content creators within the People & Blogs category. 
+    These include a variety of content creators such as Jake Paul, Casey Neistat, Lady Gaga, TedTalks and more. \n
+    The generated word clouds below illustrate the most frequently used tags by these content creators! 
     """)
 
 
@@ -173,17 +189,12 @@ st.markdown(
 
 st.write(
     """
-    The word cloud, representing popular tags from the most subscribed YouTubers in a 
-    certain category, illustrates that these creators often employ self-referential tags. 
-    These include their personal and channel names—examples being "Jake Paul" and "Roman 
-    Atwood," as well as extensions of these with "Vlogs" appended. This strategy is 
-    indicative of self-promotion and brand reinforcement, which is particularly effective 
-    for those who have already established a significant presence within the YouTube 
-    community. Beyond individual branding, generic terms like "vlogs" and "vlogging" are 
-    also prevalent across various channels, denoting a common content format among these 
-    creators. These frequent tags not only aid in discoverability but also signify the 
-    content type that viewers can expect, serving as a universal signifier within the 
-    digital content landscape.
-
+    Oh... So it seems that the most subscribed content creators seem to use tags that are more self-referential
+    as the tags for almost each content creator's word cloud are their own names.  These include their personal and 
+    channel names—examples being "Jake Paul" and "Roman Atwood," as well as extensions of these with "Vlogs" appended.
+    This strategy is indicative of self-promotion and brand reinforcement, which is particularly effective for those
+    who have already established a significant presence within the YouTube community. Beyond individual branding,
+    generic terms like "vlogs" and "vlogging" are also prevalent across various channels, denoting a common content
+    format among these creators. \n
     """)
 
