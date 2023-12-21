@@ -99,7 +99,7 @@ df_helper_id = df_helper[df_helper['channel_id'] == channel_id]
 
 if channel_name == "The LaBrant Fam":
 
-    st.write("""## Analysis of The LaBrant Family evolution""")
+    st.write("""## The LaBrant Family evolution""")
     st.write("""Analyzing the following charts, we can observe the evolution of the YouTube channel showing the life of the LaBrant family over time. We will focus on the transition from comedy to vlogging in February 2018 and the changes in video characteristics before and after this shift.""")
     
     st.write("""### 1. Category Shift Impact: """)
@@ -139,39 +139,39 @@ if channel_name == "The LaBrant Fam":
     st.write("""
              **Before the transition**, the like-to-view ratio was varied before July 2016, with some months achieving ratios over 3.5%, likely due to specific comedy videos resonating with the audience.
              Between July 2016 and the transition in February 2018, the impact of the videos on the comunity stabilizes at a low level, around 1%.
-             However, 
-             fidel commu only but more pleased by the video showing the intimmacy of the family life. People are getting attached to each family member. 
-             Post-transition, it appears that the like-to-view ratio experiences a slight upward trend, which could suggest that the vlogging content resonated better with the audience or reached a wider viewership that engaged positively.
+             We can also see bigger marker, which means more views during this pre-transition period. 
+             For example, the wedding video uploaded in July 2017 cumulates today over 50 millions of views. 
+             This shows that their content was reaching a wider viewership than after the transition.
              """)
-    st.write("""
-    **Before the Transition:**
-    - 
-    """)
-    st.write("""
-    **After the Transition:**
-    - A general increase in engagement, as shown by the like-to-view ratio, indicates positive reception to the vlogging content.
-    - The gradual increase in the size of the markers over time suggests a steady growth in viewership, indicating that the channel was possibly attracting more viewers who were engaged with the content.
-    """)
+    st.write("""    
+             **After transitioning**, it appears that the like-to-view ratio experiences a slight upward trend, but the number of views is decreasing compared to early buzz. 
+             The loyal fan base remains, finding greater enjoyment in videos that showcase the intimate aspects of family life. 
+             Viewers are becoming more connected to each member of the family, as they see the kids growing.
+             """)
 
     st.write("""### 3. Video Duration and Production Volume:""")
     video_frequency_and_duration(df_helper_id,
                                  start_date_str,
                                  end_date_str,
                                  transition_date_str)
-    st.write("""The third chart shows both the mean video duration and the count of videos per month. There's a clear upward trend in video duration over time, indicating that the channel's videos became longer on average, which is common in vlogging content as it tends to cover daily life events that require longer footage.""")
+    st.write("""The third chart shows both the mean video duration and the count of videos per month. 
+             There's a clear upward trend in video duration over time, indicating that the channel's videos became longer on average, which is common in vlogging content as it tends to cover daily life events that require longer footage.""")
     st.write("""
-    **Before the Transition:**
-    - Video duration varied but stayed within a lower range. This is typical for comedy content, which tends to be shorter to maintain comedic timing and impact.
+    **Before the transition**, the video duration varied but stayed within a lower range of less than 10 minutes. 
+             This is typical for comedy content, which tends to be shorter to be attractive.
+             The plafonning of video duration at 10 minutes starting from the end of 2017 also correspond to the double advertising before the video if it's longer than 10 minutes.  
     """)
     st.write("""
-    **After the Transition:**
-    - Not only did the number of videos increase, but the average duration also increased. This suggests a strategic choice to provide more in-depth content, likely to foster a deeper connection with the audience.
-    - The steady increase in video length could also reflect the channel's confidence in retaining viewer attention for longer periods, a sign of a maturing content strategy and growing audience engagement.
+    **After the transition,** not only did the number of videos increase, but the average duration also increased. 
+             This suggests a strategic choice to provide more in-depth content about the intimate life of Cole, Savannah, and their childs. 
+             The steady increase in video length could also reflect the channel's confidence in retaining viewer attention for longer periods, a sign of a maturing content strategy and growing audience engagement.
     """)
 
     st.write("""### Conclusion""")
     st.write("""
-    The transition from comedy to vlogging has had a significant impact on "The LaBrant Fam" channel. The shift led to increased video output and longer content, which aligns with the more personal and in-depth nature of vlogs. The increase in the like-to-view ratio post-transition suggests that the audience received the new content direction positively, and the channel's growth in terms of views may be attributed to this strategic pivot. Overall, the transition appears to have been successful, with the channel adapting its content to meet audience preferences and possibly to align with broader trends in viewer engagement on YouTube.
+    The transition from comedy to vlogging has had a significant impact on "The LaBrant Fam" channel. The shift led to increased video output and longer content, which aligns with the more personal and confessional strategy of the family. 
+             The increase in the like-to-view ratio post-transition suggests that the audience received the new content direction positively. 
+             Overall, the transition appears to have been successful for our favorite family, with the channel adapting its content to meet audience preferences and possibly to align with broader trends in viewer engagement on YouTube.
     """)
 
 else: 
