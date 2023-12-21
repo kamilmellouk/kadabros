@@ -1,0 +1,27 @@
+name: Sync with Upstream
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Runs every 30 minutes, change as needed
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Fetch all history for all branches and tags
+
+    - name: Setup Git Config
+      run: |
+        git config user.name "kamilmellouk"
+        git config user.email "kamil.mellouk@epfl.ch"
+
+    - name: Sync with Upstream
+      run: |
+        git remote add upstream https://github.com/epfl-ada/ada-2023-project-kadabros.git
+        git fetch upstream
+        git checkout main
+        git merge upstream/main
+        git push
