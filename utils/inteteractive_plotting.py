@@ -1,4 +1,5 @@
 import plotly.graph_objs as go
+from plotly.subplots import make_subplots
 import pandas as pd
 import streamlit as st
 
@@ -90,19 +91,21 @@ def video_frequency_and_duration(df_feather,
     x_axis = get_date_range(df_feather['year_month'].min(),
                             df_feather['year_month'].max())
 
-    fig = go.Figure()
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
 
     fig.add_trace(go.Scatter(x=x_axis,
                              y=mean_duration,
                              mode='lines+markers',
                              name='Mean Duration (min)',
-                             line=dict(color='blue')))
+                             line=dict(color='blue')),
+                  secondary_y=False)
 
     fig.add_trace(go.Bar(x=x_axis,
                          y=video_count,
                          name='Video Count',
                          marker_color='blue',
-                         opacity=0.4))
+                         opacity=0.4),
+                  secondary_y=True)
 
     if transition_date:
         fig.add_vline(x=pd.to_datetime(transition_date),
@@ -110,16 +113,16 @@ def video_frequency_and_duration(df_feather,
                       line_color="red")
 
     fig.update_layout(title='Mean Video Duration and Video Count per Month',
-                      xaxis_title='Upload Month',
-                      yaxis_title='Mean Video Duration [minutes]',
-                      yaxis2=dict(title='Number of Videos',
-                                  overlaying='y',
-                                  side='right'),
                       legend=dict(orientation="h",
                                   yanchor="bottom",
                                   y=1.02,
                                   xanchor="right",
                                   x=1))
+
+    fig.update_xaxes(title_text="Upload Month")
+
+    fig.update_yaxes(title_text="Mean Duration (min)", secondary_y=False)
+    fig.update_yaxes(title_text="Video Count", secondary_y=True)
 
     st.plotly_chart(fig)
 
