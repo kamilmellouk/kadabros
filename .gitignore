@@ -1,5 +1,6 @@
-# ignore data folder(s)
+# ignore data folder(s)/files
 /data*
+website_data/People_&_Blogs/df_PB_helper.feather
 
 # ignore .DS_Store files
 .DS_Store
