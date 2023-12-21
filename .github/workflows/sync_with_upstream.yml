@@ -26,4 +26,5 @@ jobs:
         git checkout main
         git merge upstream/main || (git merge --abort && git merge -X theirs upstream/main)
         # Use the PAT for pushing changes
+        git pull
         git push https://${{ secrets.SYNC_PAT }}@github.com/kamilmellouk/kadabros.git main
