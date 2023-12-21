@@ -75,20 +75,27 @@ def video_frequency_and_duration(df_feather,
                                  end_date=None,
                                  transition_date=None):
     df_feather = df_feather.copy()
-    df_feather['year_month'] = pd.to_datetime(df_feather['year_month']
-                                              .dt.to_timestamp())
+    df_feather['year_month'] = df_feather['year_month'].dt.to_timestamp()
+
     if start_date:
         df_feather = df_feather[df_feather['year_month'] >=
                                 pd.to_datetime(start_date)]
     if end_date:
         df_feather = df_feather[df_feather['year_month'] <=
                                 pd.to_datetime(end_date)]
-
+        
     mean_duration = df_feather.groupby('year_month')['duration'].mean() / 60
     video_count = df_feather.groupby('year_month').size()
 
+    # Convert the index of mean_duration to PeriodIndex with monthly frequency
+    mean_duration.index = pd.PeriodIndex(mean_duration.index, freq='M')
+    video_count.index = pd.PeriodIndex(video_count.index, freq='M')
+
     x_axis = get_date_range(df_feather['year_month'].min(),
                             df_feather['year_month'].max())
+    
+    mean_duration = mean_duration.reindex(x_axis, fill_value=0)
+    video_count = video_count.reindex(x_axis, fill_value=0)
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -126,44 +133,36 @@ def video_frequency_and_duration(df_feather,
     st.plotly_chart(fig)
 
 
-def video_likes_and_views(df_feather,
-                          channel_name,
-                          start_date=None,
-                          end_date=None,
-                          transition_date=None):
+def video_likes_and_views(df_feather, channel_name, start_date=None, end_date=None, transition_date=None):
     df_feather = df_feather.copy()
-    df_feather['year_month'] = pd.to_datetime(df_feather['year_month']
-                                              .dt.to_timestamp())
+    df_feather['year_month'] = df_feather['year_month'].dt.to_timestamp()
 
     if start_date:
-        df_feather = df_feather[df_feather['year_month'] >=
-                                pd.to_datetime(start_date)]
+        start_date = pd.to_datetime(start_date).replace(day=1) 
+        df_feather = df_feather[df_feather['year_month'] >= start_date]
     if end_date:
-        df_feather = df_feather[df_feather['year_month'] <=
-                                pd.to_datetime(end_date)]
+        end_date = pd.to_datetime(end_date).replace(day=1)  
+        df_feather = df_feather[df_feather['year_month'] <= end_date]
 
     df_filtered = df_feather.groupby("year_month").agg({
         "like_count": "mean",
         "dislike_count": "mean",
         "view_count": "mean"
     })
-    df_filtered["like_over_views_ratio"] = (df_filtered["like_count"] /
-                                            df_filtered["view_count"])
+    df_filtered["like_over_views_ratio"] = (df_filtered["like_count"] / df_filtered["view_count"])
 
-    x_axis = get_date_range(df_feather['year_month'].min(),
-                            df_feather['year_month'].max())
-
+    x_axis = get_date_range(df_feather['year_month'].min(), df_feather['year_month'].max())
+    
+    # Reindex the df_filtered to include all dates in x_axis, filling missing values with 0
+    df_filtered = df_filtered.reindex(x_axis, fill_value=0)
+    
     # Normalize mean views for marker sizes
-    # Adjust size factor and minimum size
-    scaled_marker_size = ((df_filtered["view_count"] -
-                           df_filtered["view_count"].min()) /
-                          (df_filtered["view_count"].max() -
-                           df_filtered["view_count"].min()) * 20) + 5
+    scaled_marker_size = ((df_filtered["view_count"] - df_filtered["view_count"].min()) /
+                          (df_filtered["view_count"].max() - df_filtered["view_count"].min()) * 20) + 5
 
     fig = go.Figure(data=go.Scatter(
         x=x_axis,
-        # Convert to percentage
-        y=df_filtered["like_over_views_ratio"] * 100,
+        y=df_filtered["like_over_views_ratio"] * 100,  # Convert to percentage
         mode='markers',
         marker=dict(
             size=scaled_marker_size,
@@ -174,9 +173,8 @@ def video_likes_and_views(df_feather,
     ))
 
     if transition_date:
-        fig.add_vline(x=pd.to_datetime(transition_date),
-                      line_dash="dash",
-                      line_color="red")
+        transition_date = pd.to_datetime(transition_date).replace(day=1)  # Ensure transition_date is the first of the month
+        fig.add_vline(x=transition_date, line_dash="dash", line_color="red")
 
     fig.update_layout(title="Like/Views Percentage with Views Indicated by Marker Size",
                       yaxis_title='Like/Views Ratio [%]',
