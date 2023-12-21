@@ -59,7 +59,7 @@ def visualize_evolution_of_channel(df_feather,
                       line_color="red")
 
     fig.update_layout(title=f'Videos of channel {channel_name}',
-                      xaxis_title='Year-Month',
+                      xaxis_title='Upload Month',
                       yaxis_title='Number of Videos',
                       legend=dict(orientation="h",
                                   yanchor="bottom",
@@ -160,7 +160,8 @@ def video_likes_and_views(df_feather,
 
     fig = go.Figure(data=go.Scatter(
         x=x_axis,
-        y=df_filtered["like_over_views_ratio"],
+        # Convert to percentage
+        y=df_filtered["like_over_views_ratio"] * 100,
         mode='markers',
         marker=dict(
             size=scaled_marker_size,
@@ -175,10 +176,10 @@ def video_likes_and_views(df_feather,
                       line_dash="dash",
                       line_color="red")
 
-    fig.update_layout(title='Like/Views Ratio per Month with Views\
-                      Indicated by Marker Size',
+    fig.update_layout(title="Like/Views Ratio per Month with Views\
+                      Indicated by Marker Size",
                       xaxis_title='Upload Month',
-                      yaxis_title='Like/Views Ratio',
+                      yaxis_title='Like/Views Ratio [%]',
                       legend=dict(orientation="h",
                                   yanchor="bottom",
                                   y=1.02,

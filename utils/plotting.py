@@ -40,7 +40,7 @@ def video_frequency_and_duration(channel_id,
                                  channel_name,
                                  start_date=None,
                                  end_date=None,
-                                 transition_date=None, 
+                                 transition_date=None,
                                  streamlit_plot=True):
     """
     Plots the mean video duration per month for given channels, with an
@@ -124,7 +124,7 @@ def video_likes_and_views(channel_id,
                           channel_name,
                           start_date=None,
                           end_date=None,
-                          transition_date=None, 
+                          transition_date=None,
                           streamlit_plot=True):
     """
     Plots the mean video likes and views per month for given channels,
@@ -202,7 +202,7 @@ def visualize_evolution_of_channel(channel_id,
                                    channel_name,
                                    start_date=None,
                                    end_date=None,
-                                   transition_date=None, 
+                                   transition_date=None,
                                    streamlit_plot=True):
     '''
     Plots the evolution of video counts across different
