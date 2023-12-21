@@ -87,16 +87,16 @@ st.write(
     """
  At first glance, it's evident that "vlog" is the most popular tag, 
  towering over others with its usage count nearing the 250,000 
- mark. This is followed by "family," which suggests a significant
+ mark. This is followed by "funny" and "family" which suggests a significant
  number of content creators focus on family-oriented material, 
  and the tag "vlogger," indicating a personal branding approach.
- Notably, there is a lexical variation in the tags used: "vlog," 
-"vlogger," and "vlogs" essentially refer to the same concept 
-but differ in their grammatical form—singular noun, agent noun, and plural noun, respectively. 
+ Notably, there is a lexical variation in the tags used: "vlog", 
+"vlogger", "vlogging", "vlogger", and "vlogs" essentially refer to the same concept 
+but differ in their grammar. 
 This reflects an interesting aspect of tagging behavior where creators use different forms of 
 a word to maximize visibility across search queries. \n
 
-The tags "kids" and "daily vlog" are also quite prevalent, 
+The tags "love" and "kids" are also quite prevalent, 
 indicating a trend towards family and everyday life content. 
 The presence of "review" and "daily" suggests a strong 
 nclination towards regular content updates and product or 
@@ -106,10 +106,20 @@ for engaging viewers. Further down the list, the tags "video," "fitness," "life,
 but still significant in numbers. These tags represent niche 
 areas within the broader People & Blogs category, from lifestyle
 and wellness to beauty tutorials. \n
-
-
     """)
 
+st.subheader('But... How Do The Most Subscribed Content Creators Within People & Blogs Use Their Tags ?')
+
+st.write(
+    """
+    As we try to understand the most used tags within the People & Blogs category,
+    we should also take a look at how the most subscribed content creators within this category use their tags.
+    For this purpose, we will take a look at the top 10 most subscribed content creators within the People & Blogs category.
+    These include a variety of content creators such as Jake Paul, Casey Neistat, BuzzfeedVideo, TedTalks and more. \n
+    
+    The Word Cloud works by sizing the tags based on their frequency:: 
+    the more frequently a tag appears, the larger and bolder it is displayed. 
+    """)
 
 
 file_ = open(os.path.join(WEB_DATA, 'wordcloud_tags.gif'), "rb")
@@ -124,19 +134,26 @@ st.markdown(
 
 st.write(
     """
-    The word cloud from the most subscribed channels adds a personal touch to the data story. 
-    It's a snapshot of the vibrant, dynamic world of YouTube's top content creators, 
-    highlighting the varied and unique tags that mark their content, from "Vine" to "challenge," 
-    showing the blend of humor, lifestyle, and the echoes of past trends like Vine that have influenced the 
-    tag landscape.
+    The word cloud, representing popular tags from the most subscribed YouTubers in a 
+    certain category, illustrates that these creators often employ self-referential tags. 
+    These include their personal and channel names—examples being "Jake Paul" and "Roman 
+    Atwood," as well as extensions of these with "Vlogs" appended. This strategy is 
+    indicative of self-promotion and brand reinforcement, which is particularly effective 
+    for those who have already established a significant presence within the YouTube 
+    community. Beyond individual branding, generic terms like "vlogs" and "vlogging" are 
+    also prevalent across various channels, denoting a common content format among these 
+    creators. These frequent tags not only aid in discoverability but also signify the 
+    content type that viewers can expect, serving as a universal signifier within the 
+    digital content landscape.
+
     """)
 
 
-st.subheader('Identifying Subcategories using Tags and LDA')
+#st.subheader('Identifying Subcategories Within People & Blogs')
 
-with open(LDA_PATH, 'r', encoding='utf-8') as f:
-    html_string = f.read()
+#with open(LDA_PATH, 'r', encoding='utf-8') as f:
+#    html_string = f.read()
     
-components.v1.html(html_string, width=1400, height=1000, scrolling=False)
+#components.v1.html(html_string, width=1400, height=1000, scrolling=False)
 
 
