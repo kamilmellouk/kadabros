@@ -76,7 +76,7 @@ time_range_str = time_range.strftime('%Y-%m').tolist()
 time_range_str_desc = time_range.sort_values(ascending=False)\
                                 .strftime('%Y-%m').tolist()
 default_start_date_index = time_range_str.index("2015-01")
-default_end_date_index = time_range_str_desc.index("2019-09")
+default_end_date_index = time_range_str_desc.index("2019-10")
 start_date_str = st.selectbox(
     'Select the start of the time window :soon:',
     time_range_str,
@@ -99,10 +99,10 @@ df_helper_id = df_helper[df_helper['channel_id'] == channel_id]
 if channel_name == "The LaBrant Fam":
 
     
-    transition_date = "2018-02"
+    transition_date = "2018-01"
 
     st.write("""## The LaBrant Family evolution""")
-    st.write("""Analyzing the following charts, we can observe the evolution of the YouTube channel showing the life of the LaBrant family over time. We will focus on the transition from comedy to vlogging in February 2018 and the changes in video characteristics before and after this shift.""")
+    st.write("""Analyzing the following charts, we can observe the evolution of the YouTube channel showing the life of the LaBrant family over time. We will focus on the transition from comedy to vlogging in January 2018 and the changes in video characteristics before and after this shift.""")
     
     st.write("""### 1. Category Shift Impact: """)
     visualize_evolution_of_channel(df_helper_id,
@@ -110,13 +110,14 @@ if channel_name == "The LaBrant Fam":
                                    start_date_str,
                                    end_date_str,
                                    transition_date)
-    st.write("""This first chart indicates a pivotal change in February 2018, where the video category shifted from Comedy to People & Blogs. Before this shift, the channel's focus on comedy yielded a relatively stable output of videos, with the count fluctuating slightly but generally showing a consistent presence.""")
+    st.write("""This first chart indicates a pivotal change in January 2018, where the video category shifted from Comedy to People & Blogs. 
+             By looking more into details to the YouTube channel, we observe that the new content direction took place before the switch of the videos categories, around July 2017""")
     st.write("""
              Indeed, Cole, the father, gained first popularity on the social media Vine. 
              He then met his wife Savannah at 19 years old and transitioned over YouTube. 
              They began with fun video, in line with their Vine videos. 
              **Before the transition**, the chart show a consitent presence on the plateform with 8 videos by month in average. 
-             That can results from a consistent production schedule. 
+             That can result from a organized production schedule. 
              2016 is a period where first YouTube creators began to live from their videos.
              You can still look at their YouTube channel to see them (for those not deleted) : `FAMILY BAKING PRANK WAR`, `DRIVING WITH CIKE | MCDONALDS ROMANCE?!` and `BLINDFOLD TASTE CHALLENGE WITH 3 YEAR OLD!!`.
              """)
@@ -140,7 +141,7 @@ if channel_name == "The LaBrant Fam":
              This ratio serves as a useful metric for gauging the positive impact a video has on viewers during its viewing.""")
     st.write("""
              **Before the transition**, the like-to-view ratio was varied before July 2016, with some months achieving ratios over 3.5%, likely due to specific comedy videos resonating with the audience.
-             Between July 2016 and the transition in February 2018, the impact of the videos on the comunity stabilizes at a low level, around 1%.
+             Between July 2016 and the transition in January 2018, the impact of the videos on the comunity stabilizes at a low level, around 1%.
              We can also see bigger marker, which means more views during this pre-transition period. 
              For example, the wedding video uploaded in July 2017 cumulates today over 50 millions of views. 
              This shows that their content was reaching a wider viewership than after the transition.
