@@ -60,7 +60,6 @@ def visualize_evolution_of_channel(df_feather,
                       line_color="red")
 
     fig.update_layout(title=f'Videos of channel {channel_name}',
-                      xaxis_title='Upload Month',
                       yaxis_title='Number of Videos',
                       legend=dict(orientation="h",
                                   yanchor="bottom",
@@ -119,7 +118,7 @@ def video_frequency_and_duration(df_feather,
                                   xanchor="right",
                                   x=1))
 
-    fig.update_xaxes(title_text="Upload Month")
+    # fig.update_xaxes(title_text="Upload Month")
 
     fig.update_yaxes(title_text="Mean Duration (min)", secondary_y=False)
     fig.update_yaxes(title_text="Video Count", secondary_y=True)
@@ -179,9 +178,7 @@ def video_likes_and_views(df_feather,
                       line_dash="dash",
                       line_color="red")
 
-    fig.update_layout(title="Like/Views Ratio per Month with Views\
-                      Indicated by Marker Size",
-                      xaxis_title='Upload Month',
+    fig.update_layout(title="Like/Views Percentage with Views Indicated by Marker Size",
                       yaxis_title='Like/Views Ratio [%]',
                       legend=dict(orientation="h",
                                   yanchor="bottom",

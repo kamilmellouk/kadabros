@@ -96,7 +96,7 @@ def video_frequency_and_duration(channel_id,
                     linestyle='--',
                     label='Transition')
 
-    ax1.set_xlabel("Upload Month")
+    # ax1.set_xlabel("Upload Month")
     ax1.set_ylabel("Mean Video Duration [minutes]", color='black')
     ax2.set_ylabel("Number of Videos", color='black')
     ax1.tick_params(axis='y', colors='black')
@@ -187,7 +187,7 @@ def video_likes_and_views(channel_id,
 
     plt.xticks(rotation=90)
     plt.ylabel("Like/Views Ratio")
-    plt.xlabel("Upload Month")
+    # plt.xlabel("Upload Month")
     plt.title("Like/Views Ratio per Month with Views Indicated by Marker Size")
     plt.legend()
     plt.tight_layout()
@@ -259,7 +259,7 @@ def visualize_evolution_of_channel(channel_id,
 
     plt.xticks(rotation=90)
     plt.ylabel("Number of Videos")
-    plt.xlabel("Year-Month")
+    # plt.xlabel("Year-Month")
     plt.title(f"Videos of channel {channel_name}")
     plt.legend()
     plt.tight_layout()
