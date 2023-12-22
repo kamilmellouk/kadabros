@@ -140,7 +140,7 @@ components.v1.html(html_string, width=1400, height=800, scrolling=False)
 st.markdown(
 """
 After analyzing the results from our LDA model, 
-we have pinpointed the top 30 key terms from a large dataset of 150,000 tags used in the People & Blogs category. 
+we have pinpointed the top 30 key terms. 
 To deepen our understanding and provide clearer insights, we have also created a 'topic' lookup table for reference.
  
 1. **Lifestyle**: tags like `fitness`, `health`, `diet` and alike indicate a subcategory of lifestyle content.
@@ -160,7 +160,7 @@ st.write(
     """
     The People & Blogs category on YouTube is notably diverse, yet distinct subcategories emerge when analyzing tags through the LDA model. 
     While increasing the predefined number of topics could reveal more subcategories, a consistent finding is that nearly every distinct topic 
-    includes some variation of "vlog." This suggests that vlogging is a prevalent content format within the People & Blogs category, with each 
+    includes some variation of "vlog" in terms of the relevancy. This suggests that vlogging is a prevalent content format within the People & Blogs category, with each 
     subcategory representing a variation of vlogging, distinguished by its unique content focus.
     """     
 )
@@ -189,7 +189,7 @@ st.markdown(
 
 st.write(
     """
-    Oh... So it seems that the most subscribed content creators seem to use tags that are more self-referential
+    Oh... and so it seems that the most subscribed content creators use tags that are more self-referential
     as the tags for almost each content creator's word cloud are their own names.  These include their personal and 
     channel names—examples being "Jake Paul" and "Roman Atwood," as well as extensions of these with "Vlogs" appended.
     This strategy is indicative of self-promotion and brand reinforcement, which is particularly effective for those
