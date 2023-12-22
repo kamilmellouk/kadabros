@@ -95,7 +95,7 @@ The team plans to follow the timeline below for the project:
 
     - Cyril Khoneisser: General People and Blogs Overview - plotting, analysis, and website contribution.
 
-    - Kamil Mellouk: Website setup and deployment.
+    - Kamil Mellouk: Conclusion, strategic recommendations for channel growth, website setup and deployment.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
