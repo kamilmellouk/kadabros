@@ -27,9 +27,10 @@ Our analysis delves into the evolution of subcategories within
             strategically navigate and benefit from subcategory
             trends, and explores the specific evolution of the Vlog
             subcategory. Our aim is to understand when and why channels
-            eventually have transitioned into or out of the People & Blogs
+            eventually have transitioned into the People & Blogs
             categories over the past decade, and mostly what consequences
-            the shift had on their audience and popularity.
+            the shift had on their audience and popularity.To answer that question,
+            we will analyse a specific channel trajectory.
 
 ## Research Questions
 The goal of this research is to get insights on the emergence of the
@@ -47,10 +48,9 @@ The goal of this research is to get insights on the emergence of the
             evolve over time?
 * What insights can be gained from the evolution of Vlog videos within
             "People & Blogs" over time (considering factors such as length,
-                views, likes, dislikes, and comments)?
-* How did Youtube channels morphing either into or out of the People & Blogs
-            categories fare after the transition ? E.g. how was a channel's
-            popularity affected after migrating from Gaming to Vlog ?
+                views and likes)?
+* How did Youtube channels morphing into the People & Blogs
+            categories fare after the transition ?
 
 ## Data Sources
 This data story relies on the Youniverse dataset, made available by
