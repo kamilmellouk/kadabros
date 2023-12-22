@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project assignment was implemented by the Kadabros team (see below for group members) for the <a href="https://epfl-ada.github.io/teaching/fall2023/cs401/">CS401 Appplied Data Analysis</a> course at <a href="https://www.epfl.ch">EPFL</a>. It builds on the YouNiverse dataset studied and made available by [Manoel Horeira](https://zenodo.org/records/4650046).
+This project assignment was implemented by the Kadabros team (see below for group members) for the <a href="https://epfl-ada.github.io/teaching/fall2023/cs401/">CS401 Appplied Data Analysis</a> course at <a href="https://www.epfl.ch">EPFL</a>. It builds on the YouNiverse dataset studied and made available by [Manoel Horeira](https://zenodo.org/records/4650046). Our data story is available <a href="https://ada-kadabros.streamlit.app">here</a>.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
